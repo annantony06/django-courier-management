@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Package</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
+</head>
+<body>
+    <h1>Add Package</h1>
+    <form method="POST" action="{% url 'myapp:add_package' %}">
+        {% csrf_token %}
+
+        <h2>Package Details</h2>
+        {{ form.tracking_number.label_tag }} {{ form.tracking_number }}<br><br>
+        {{ form.status.label_tag }} {{ form.status }}<br><br>
+        {{ form.description.label_tag }} {{ form.description }}<br><br>
+        {{ form.weight.label_tag }} {{ form.weight }}<br><br>
+        {{ form.height.label_tag }} {{ form.height }}<br><br>
+
+        <h2>Pickup & Delivery Info</h2>
+        {{ form.pickup_location.label_tag }} {{ form.pickup_location }}<br><br>
+        {{ form.delivery_address.label_tag }} {{ form.delivery_address }}<br><br>
+        {{ form.pickup_time.label_tag }} {{ form.pickup_time }}<br><br>
+        {{ form.delivery_time.label_tag }} {{ form.delivery_time }}<br><br>
+
+        <h2>Source Details</h2>
+        {{ form.source_email.label_tag }} {{ form.source_email }}<br><br>
+        {{ form.source_phone.label_tag }} {{ form.source_phone }}<br><br>
+        {{ form.source_address.label_tag }} {{ form.source_address }}<br><br>
+
+        <h2>Destination Details</h2>
+        {{ form.destination_email.label_tag }} {{ form.destination_email }}<br><br>
+        {{ form.destination_phone.label_tag }} {{ form.destination_phone }}<br><br>
+        {{ form.destination_address.label_tag }} {{ form.destination_address }}<br><br>
+
+        <button type="submit">Add Package</button>
+    </form>
+
+    <p><a href="{% url 'myapp:dashboard' %}">Back to Dashboard</a></p>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Details</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'staff/style2.css' %}">  <!-- Use Django's static template tag -->
+    
+</head>
+<body>
+    <header>
+        <h1>Branch Details</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>{{ branch.name }}</h2>
+            <p><strong>Location:</strong> {{ branch.location }}</p>
+        </section>
+
+        <section>
+            <h3>Packages Managed by This Branch</h3>
+            <ul>
+                {% for package in branch.package_set.all %}
+                    <li>
+                        <strong>Tracking Number:</strong> {{ package.tracking_number }}<br>
+                        <strong>Status:</strong> {{ package.get_status_display }}<br>
+                    </li>
+                {% empty %}
+                    <li>No packages managed by this branch.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <a href="{% url 'staff:staffdashboard' %}">Back to Dashboard</a>  <!-- Link to go back to the dashboard -->
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

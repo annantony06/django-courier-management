@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myapp/anstyle.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="title">Sign Up</h2>
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <i class='bx bxs-user'></i>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bx-mail-send'></i>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-map'></i>
+                <input type="text" name="address" placeholder="Address" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-location-plus'></i>
+                <input type="text" name="district" placeholder="District" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-location'></i>
+                <input type="text" name="state" placeholder="State" required>
+            </div>
+            <div class="input-group">
+                <i class='bx bxs-phone'></i>
+                <input type="text" name="phone_number" placeholder="Phone Number" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <p>
+            Already have an account?
+            <a href="{% url 'signin' %}">Sign in here</a>
+        </p>
+    </div>
+    <script src="{% static 'frontend/script.js' %}"></script>
+</body>
+</html>

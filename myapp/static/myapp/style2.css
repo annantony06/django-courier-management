@@ -1,0 +1,74 @@
+/* style.css */
+
+/* Set the background color to black */
+body {
+    background-color: #000000; /* Black background */
+    color: #FFFFFF; /* White text for contrast */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add some padding */
+    font-family: Arial, sans-serif; /* Default font */
+}
+
+/* Center content */
+.container {
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background for the container */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Style for headings */
+h2 {
+    color: #00FFFF; /* Cyan color for headings */
+    text-align: center; /* Center align headings */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+/* Style for tables */
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px; /* Add margin above the table */
+}
+
+th, td {
+    padding: 12px; /* Add padding */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #444; /* Dark border for rows */
+}
+
+th {
+    background-color: #444444; /* Dark gray background for header */
+    color: #FFFFFF; /* White text for header */
+}
+
+tr:hover {
+    background-color: #555555; /* Change background on hover to a lighter gray */
+}
+
+/* Style for links */
+a {
+    color: #00FFFF; /* Cyan color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #00FFFF; /* Cyan on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    th, td {
+        padding: 10px; /* Reduce padding for table cells */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Adjust heading size on smaller screens */
+    }
+}

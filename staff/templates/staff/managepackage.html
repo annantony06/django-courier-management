@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Packages</title>
+    <link rel="stylesheet" href="{% static 'staff/style2.css' %}">
+</head>
+<body>
+    <h1>Manage Packages</h1>
+    <p>Number of packages: {{ packages|length }}</p> <!-- Show number of packages here -->
+    <table border="1">
+        <tr>
+            <th>Tracking Number</th>
+            <th>Status</th>
+            <th>Pickup Location</th>
+            <th>Delivery Address</th>
+            <th>Feedback</th>
+        </tr>
+        {% for package in packages %}
+        <tr>
+            <td>{{ package.tracking_number }}</td>
+            <td>{{ package.status }}</td>
+            <td>{{ package.pickup_location }}</td>
+            <td>{{ package.delivery_address }}</td>
+            <td>
+                {% if package.feedback %}
+                    {{ package.feedback }}
+                {% else %}
+                    No feedback
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No packages found</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

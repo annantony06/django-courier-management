@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Tracking</title>
+</head>
+<body>
+    <h1>Courier Tracking</h1>
+
+    {% if courier %}
+        <p><strong>Courier Name:</strong> {{ courier.name }}</p>
+        <p><strong>Status:</strong> {{ courier.status|capfirst }}</p> <!-- Capitalize the first letter of status -->
+        <p><strong>Current Location:</strong> {{ courier.current_location }}</p>
+        <p><strong>Created At:</strong> {{ courier.created_at }}</p> <!-- Display creation date -->
+    {% else %}
+        <p>{{ error }}</p>  <!-- Display error message if courier is not found -->
+    {% endif %}
+</body>
+</html>

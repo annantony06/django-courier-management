@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Refund</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'staff/style2.css' %}">  <!-- Use Django's static template tag -->
+</head>
+<body>
+    <h1>Request Refund for Feedback</h1>
+    
+    <h2>Feedback Details</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <td>{{ feedback.user.username }}</td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td>{{ feedback.content }}</td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td>{{ feedback.created_at }}</td>
+        </tr>
+    </table>
+
+    <h2>Refund Request Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="amount">Refund Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
+        </div>
+        <div>
+            <label for="reason">Reason for Refund:</label>
+            <textarea id="reason" name="reason" rows="4" required></textarea>
+        </div>
+        <button type="submit">Submit Refund Request</button>
+    </form>
+
+    <a href="{% url 'staff:feedback_list' %}">Back to Feedback List</a>
+</body>
+</html>

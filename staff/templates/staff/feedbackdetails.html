@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Details</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'staff/style2.css' %}">  <!-- Use Django's static template tag -->
+<body>
+    <h1>Feedback Details</h1>
+    <table>
+        <tr>
+            <th>User</th>
+            <td>{{ feedback.user.username }}</td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td>{{ feedback.content }}</td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td>{{ feedback.created_at }}</td>
+        </tr>
+    </table>
+
+    <h2>Actions</h2>
+    <a href="{% url 'staff:request_refund' feedback.id %}">Request Refund</a>
+    <a href="{% url 'staff:feedback_list' %}">Back to Feedback List</a>
+</body>
+</html>

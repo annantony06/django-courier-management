@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Page</h1>
+        <p>Total Amount: ${{ amount }}</p>  <!-- Display the amount -->
+
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Payment Details</h2>
+            <div class="form-group">
+                <label for="card_number">Card Number:</label>
+                <input type="text" id="card_number" name="card_number" required placeholder="Enter your card number">
+            </div>
+
+            <div class="form-group">
+                <label for="expiry_date">Expiry Date (MM/YY):</label>
+                <input type="text" id="expiry_date" name="expiry_date" required placeholder="MM/YY">
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required placeholder="Enter CVV">
+            </div>
+
+            <button type="submit">Pay Now</button>
+        </form>
+
+        <p><a href="{% url 'myapp:dashboard' %}">Back to Dashboard</a></p>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px; /* Set a fixed width for the form */
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left; /* Align labels to the left */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Package Status</title>
+<!-- Boxicons for icons -->
+<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'staff/style2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Update Package Status for {{ package.tracking_number }}</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="status">New Status:</label>
+            <select id="status" name="status" required>
+                <option value="Pending" {% if package.status == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="Picked Up" {% if package.status == 'Picked Up' %}selected{% endif %}>Picked Up</option>
+                <option value="Held" {% if package.status == 'Held' %}selected{% endif %}>Held</option>
+                <option value="Delivered" {% if package.status == 'Delivered' %}selected{% endif %}>Delivered</option>
+            </select>
+            <button type="submit">Update Status</button>
+        </form>
+        <a href="{% url 'user_packages' %}">Back to Your Packages</a>
+    </div>
+</body>
+</html>

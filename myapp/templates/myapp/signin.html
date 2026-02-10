@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome User</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome Back, {{ user.username }}!</h2>
+        <p>You have successfully signed in.</p>
+        <div class="btn-container">
+            <a href="{% url 'myapp:dashboard' %}" class="btn">Go to Dashboard</a>
+            <a href="{% url 'myapp:logout' %}" class="btn">Log Out</a>
+        </div>
+    </div>
+</body>
+</html>

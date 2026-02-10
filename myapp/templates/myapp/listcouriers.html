@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Couriers</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
+</head>
+<body>
+    <h1>Your Couriers</h1>
+    {% if couriers %}
+        <ul>
+            {% for courier in couriers %}
+                <li>
+                    <strong>Name:</strong> {{ courier.name }}<br>
+                    <strong>Status:</strong> {{ courier.status }}<br>
+                    <strong>Current Location:</strong> {{ courier.current_location }}<br>
+                    <strong>Created At:</strong> {{ courier.created_at }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no couriers.</p>
+    {% endif %}
+    <a href="{% url 'myapp:dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

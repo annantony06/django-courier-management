@@ -1,0 +1,82 @@
+/* style.css */
+
+/* Set the background color to white */
+body {
+    background-color: #FFFFFF; /* White background */
+    color: black; /* Black text for contrast */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add some padding */
+/* style.css */
+
+/* Set the background color to white */
+body {
+    background-color: #FFFFFF; /* White background */
+    color: black; /* Black text for contrast */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add some padding */
+    font-family: Arial, sans-serif; /* Default font */
+}
+
+/* Center content */
+.container {
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent black background for the container */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Style for headings */
+h2 {
+    color: #FFD700; /* Gold color for headings */
+    text-align: center; /* Center align headings */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+/* Style for tables */
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px; /* Add margin above the table */
+}
+
+th, td {
+    padding: 12px; /* Add padding */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #444; /* Dark border for rows */
+}
+
+th {
+    background-color: #000000; /* Black background for header */
+    color: #ffffff; /* White text for header */
+}
+
+tr:hover {
+    background-color: #000000; /* Change background on hover to black */
+}
+
+/* Style for links */
+a {
+    color: #000000; /* Black color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #444444; /* Dark gray on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    th, td {
+        padding: 10px; /* Reduce padding for table cells */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Adjust heading size on smaller screens */
+    }
+}

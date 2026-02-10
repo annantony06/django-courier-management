@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+   <!-- Boxicons for icons -->
+   <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="{% static 'staff/style2.css' %}">
+</head>
+<body>
+    <h1>User List</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No users available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

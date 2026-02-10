@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome User</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'staff/style2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome Back, {{ user.username }}!</h2>
+        <p>You have successfully signed in.</p>
+        <div class="btn-container">
+            <a href="{% url 'staff:staffdashboard' %}" class="btn"> go to dashboard</a>
+            <a href="{% url 'staff:staff' %}" class="btn">logout</a>
+        </div>
+    </div>
+</body>
+</html>

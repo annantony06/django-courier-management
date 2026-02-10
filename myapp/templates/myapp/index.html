@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Sign Up</title>
+    <!-- Boxicons for icons -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'myapp/anstyle.css' %}">
+    <style>
+        /* Additional styles for the welcome title */
+        .welcome-container {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px; /* Add space below the title */
+        }
+
+        .dark-circle {
+    position: absolute;
+    bottom: -150px; /* Keep it down */
+    right: -10px; /* Move it slightly to the left */
+    width: 200px; /* Width of the circle */
+    height: 200px; /* Height of the circle */
+    background: linear-gradient(135deg, #003366, #006699); /* Dark blue transition */
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color inside the circle */
+    font-size: 1.5rem; /* Font size for the welcome text */
+}
+        
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <div class="welcome-container">
+            <div class="dark-circle">
+                Welcome
+            </div>
+        </div>
+        <div class="row">
+            <!-- SIGN UP -->
+            <div class="col align-items-center flex-col sign-up">
+                <div class="form-wrapper align-items-center">
+                    <div class="form sign-up">
+                        <form action="{% url 'myapp:signup' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bx-mail-send'></i>
+                                <input type="email" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-lock-alt'></i>
+                                <input type="password" name="password1" placeholder="Password" required>
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-lock-alt'></i>
+                                <input type="password" name="password2" placeholder="Confirm password" required>
+                            </div>
+                            <button type="submit" class="btn">Sign Up</button>
+                        </form>
+                        <p>
+                            <span>Already have an account?</span>
+                            <a href="{% url 'myapp:signin' %}" class="btn-text">Sign in here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- SIGN IN -->
+            <div class="col align-items-center flex-col sign-in">
+                <div class="form-wrapper align-items-center">
+                    <div class="form sign-in">
+                        <form action="{% url 'myapp:signin' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-lock-alt'></i>
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn">Sign In</button>
+                        </form>
+                        <p>
+                            <a href="{% url 'myapp:forgot' %}" class="btn">Forgot password?</a>
+                        </p>
+                        <p>
+                            <span>Don't have an account?</span>
+                            <a href="{% url 'myapp:signup' %}" class="btn">Sign up here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'myapp/script.js' %}"></script>
+</body>
+</html>

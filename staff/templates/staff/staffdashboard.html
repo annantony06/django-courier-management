@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'staff/style2.css' %}">  <!-- Use Django's static template tag -->
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #000;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            padding-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .sidebar h2 {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #333;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            transition: margin-left 0.3s ease;
+        }
+        .header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .header .logout {
+            background-color: #ff4d4d;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .logout:hover {
+            background-color: #d43f3f;
+        }
+        .card {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        color: black;  /* Change font color to black */
+    }
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+                overflow: hidden;
+            }
+            .sidebar h2 {
+                display: none;
+            }
+            .sidebar a {
+                justify-content: center;
+            }
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Staff Dashboard</h2>
+        <a href="{% url 'staff:manage_packages' %}"><i class='bx bxs-box'></i> Manage Packages</a>
+        <a href="{% url 'staff:branches' %}"><i class='bx bx-list-check'></i> Manage Branches</a>
+        <a href="{% url 'staff:feedback_list' %}"><i class='bx bxs-comment-detail'></i> Feedback</a>
+        <a href="{% url 'staff:user_list' %}"><i class='bx bx-user'></i> User List</a>
+        <a href="{% url 'staff:about' %}"><i class='bx bxs-info-circle'></i> About</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <div class="logo">Staff Dashboard</div>
+            <button class="logout" onclick="window.location.href='{% url 'staff:staff' %}'">Log Out</button>
+        </div>
+        <div class="card">
+            <h3>Welcome, {{ user.username }}!</h3>
+            <p>Here is your dashboard where you can manage packages, track shipments, and provide feedback.</p>
+        </div>
+        <div class="card">
+            <h3>📦 Manage Packages</h3>
+            <p>Easily track and manage your courier packages.</p>
+            <a href="{% url 'staff:manage_packages' %}">Go to Manage Packages</a>
+        </div>
+        <div class="card">
+            <h3>🏢 Manage Branches</h3>
+            <p>View and manage all branches in the system.</p>
+            <a href="{% url 'staff:branches' %}">Go to Manage Branches</a>
+        </div>
+        <div class="card">
+            <h3>📝 Feedback & Support</h3>
+            <p>Share your experience or get support from our team.</p>
+            <a href="{% url 'staff:feedback_list' %}">View Feedback</a>
+        </div>
+        <div class="card">
+            <h3>👥 User Management</h3>
+            <p>Manage users and their permissions.</p>
+            <a href="{% url 'staff:user_list' %}">View User List</a>
+        </div>
+    </div>
+</body>
+</html>

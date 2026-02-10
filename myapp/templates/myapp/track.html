@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Courier</title>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'myapp/style2.css' %}">
+</head>
+<body>
+    <h1>Track Your Courier</h1>
+
+    <form method="GET" action="{% url 'myapp:track_courier' %}">
+        <label for="courier_id">Courier ID:</label>
+        <input type="number" id="courier_id" name="courier_id" required>
+        <br>
+        <label for="courier_name">Courier Name:</label>
+        <input type="text" id="courier_name" name="courier_name" required>
+        <br>
+        <button type="submit">Track Courier</button>
+    </form>
+
+    <!-- 🔴 Error Message -->
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <!-- ✅ Show Courier Info -->
+    {% if courier %}
+        <h2>Courier Details</h2>
+        <p><strong>ID:</strong> {{ courier.id }}</p>
+        <p><strong>Name:</strong> {{ courier.name }}</p>
+        <p><strong>Status:</strong> {{ courier.status }}</p>
+        <p><strong>Tracking Number:</strong> {{ courier.tracking_number }}</p>
+        <p><strong>Delivery Address:</strong> {{ courier.delivery_address }}</p>
+        <!-- Add more fields if needed -->
+    {% endif %}
+
+    <p><a href="{% url 'myapp:dashboard' %}">Back to Dashboard</a></p>
+</body>
+</html>
